@@ -4,7 +4,7 @@
 
 ## Usage:
 
-    git clone git://github.com/cloudburst/pymagic.git
+git clone git://github.com/cloudburst/pymagic.git
 
     >>> from pymagic import *
 
