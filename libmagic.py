@@ -1,5 +1,7 @@
 #!usr/bin/python
 
+from __future__ import with_statement
+
 #       pymagic.py
 #       
 #       Copyright 2009 ahmed youssef <xmonader@gmail.com>
@@ -113,7 +115,11 @@ MAGIC_NO_CHECK_TOKENS=0x100000 		# Don't check ascii/tokens
 MAGIC_NO_CHECK_FORTRAN=0x000000 	# Don't check ascii/fortran 
 MAGIC_NO_CHECK_TROFF=0x000000 	    # Don't check ascii/troff 
 
-libmagic=CDLL("libmagic.so") #or even better, check ctypes.util
+try:
+    libmagic=CDLL("libmagic.so") #or even better, check ctypes.util
+except OSError:
+    print "libmagic.so: cannot open shared object file: file not found"
+    exit()
 
 #typedef struct magic_set *magic_t;
 #magic_t magic_open(int);
